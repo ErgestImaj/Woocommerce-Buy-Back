@@ -35,7 +35,7 @@ class Woocommerce_Buy_Back_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'woocommerce-buy-back',
+			WOOCOMMERCE_BUY_BACK,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

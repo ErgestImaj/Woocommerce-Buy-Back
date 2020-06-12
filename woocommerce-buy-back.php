@@ -32,17 +32,30 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
 define( 'WOOCOMMERCE_BUY_BACK_VERSION', '1.0.0' );
+
+/**
+ * Language Text Domain
+ */
+define( 'WOOCOMMERCE_BUY_BACK', 'woocommerce-buy-back' );
+
+/**
+ * Plugin directory path
+ */
+define( 'WOOCOMMERCE_BUY_BACK_DIR_PATH', plugin_dir_path( __FILE__ ) );
+
+/**
+ * Plugin directory url
+ */
+define( 'WOOCOMMERCE_BUY_BACK_DIR_URL', plugin_dir_url( __FILE__ ));
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-woocommerce-buy-back-activator.php
  */
 function activate_woocommerce_buy_back() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-buy-back-activator.php';
+	require_once WOOCOMMERCE_BUY_BACK_DIR_PATH . 'includes/class-woocommerce-buy-back-activator.php';
 	Woocommerce_Buy_Back_Activator::activate();
 }
 
@@ -51,7 +64,7 @@ function activate_woocommerce_buy_back() {
  * This action is documented in includes/class-woocommerce-buy-back-deactivator.php
  */
 function deactivate_woocommerce_buy_back() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-buy-back-deactivator.php';
+	require_once  WOOCOMMERCE_BUY_BACK_DIR_PATH . 'includes/class-woocommerce-buy-back-deactivator.php';
 	Woocommerce_Buy_Back_Deactivator::deactivate();
 }
 
@@ -62,7 +75,7 @@ register_deactivation_hook( __FILE__, 'deactivate_woocommerce_buy_back' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-woocommerce-buy-back.php';
+require  WOOCOMMERCE_BUY_BACK_DIR_PATH . 'includes/class-woocommerce-buy-back.php';
 
 /**
  * Begins execution of the plugin.
