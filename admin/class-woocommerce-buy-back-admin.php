@@ -61,18 +61,6 @@ class Woocommerce_Buy_Back_Admin {
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Woocommerce_Buy_Back_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Woocommerce_Buy_Back_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/woocommerce-buy-back-admin.css', array(), $this->version, 'all' );
 
 	}
@@ -84,20 +72,29 @@ class Woocommerce_Buy_Back_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Woocommerce_Buy_Back_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Woocommerce_Buy_Back_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woocommerce-buy-back-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+    /**
+     * Register plugin submenu item in woocommerce
+     *
+     * @since    1.0.0
+     */
+
+    public function register_submenu() {
+        add_submenu_page(
+            'woocommerce',
+            __('Buy Back', WOOCOMMERCE_BUY_BACK),
+            __('Buy Back', WOOCOMMERCE_BUY_BACK),
+            'manage_options',
+            'woocommerce-buy-back',
+            [$this, 'submenu_content']
+        );
+
+    }
+    public function submenu_content() {
+        require_once plugin_dir_path( __FILE__ ) . 'partials/woocommerce-buy-back-admin-display.php';
+
+    }
 
 }

@@ -1,19 +1,6 @@
 <?php
 
 /**
- * Define the internationalization functionality
- *
- * Loads and defines the internationalization files for this plugin
- * so that it is ready for translation.
- *
- * @link       http://creosweb.com
- * @since      1.0.0
- *
- * @package    Woocommerce_Buy_Back
- * @subpackage Woocommerce_Buy_Back/includes
- */
-
-/**
  * Define the internationalization functionality.
  *
  * Loads and defines the internationalization files for this plugin

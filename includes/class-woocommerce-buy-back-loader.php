@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Register all actions and filters for the plugin
- *
- * @link       http://creosweb.com
- * @since      1.0.0
- *
- * @package    Woocommerce_Buy_Back
- * @subpackage Woocommerce_Buy_Back/includes
- */
-
-/**
  * Register all actions and filters for the plugin.
  *
  * Maintain a list of all hooks that are registered throughout
