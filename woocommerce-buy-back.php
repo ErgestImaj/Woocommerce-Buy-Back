@@ -15,12 +15,10 @@
  * @wordpress-plugin
  * Plugin Name:       Woocommerce Buy Back
  * Plugin URI:        http://creosweb.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       WooCommerce Product Trade-In Plugin allows you to upload items that your visitors will be able to sell to you based on conditional pricing you can set just like any other regular WooCommerce product.
  * Version:           1.0.0
- * Author:             Creos Studio
+ * Author:            Creos Studio
  * Author URI:        http://creosweb.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       woocommerce-buy-back
  * Domain Path:       /languages
  */
