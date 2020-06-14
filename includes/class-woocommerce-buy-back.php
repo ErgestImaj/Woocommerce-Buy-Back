@@ -103,25 +103,26 @@ class Woocommerce_Buy_Back {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woocommerce-buy-back-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-woocommerce-buy-back-i18n.php';
+        foreach ( glob ( plugin_dir_path( dirname( __FILE__ ) ) . "includes/*.php" ) as $file ){
+            require_once $file;
+        }
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woocommerce-buy-back-admin.php';
+        foreach ( glob ( plugin_dir_path( dirname( __FILE__ ) ) . "admin/*.php" ) as $file ){
+            require_once $file;
+        }
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woocommerce-buy-back-public.php';
+        foreach ( glob ( plugin_dir_path( dirname( __FILE__ )  ) . "public/*.php" ) as $file ){
+            require_once $file;
+        }
 
+        
 		$this->loader = new Woocommerce_Buy_Back_Loader();
 
 	}

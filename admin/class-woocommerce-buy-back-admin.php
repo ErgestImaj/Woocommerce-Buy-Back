@@ -147,7 +147,7 @@ class Woocommerce_Buy_Back_Admin
 
     public function callback_validate_options($input)
     {
-        $input['woocommerce_buy_back_invoice_data'] = (isset($input['woocommerce_buy_back_invoice_data'])) ? sanitize_textarea_field($input['woocommerce_buy_back_invoice_data']) : '';
+        $input['woocommerce_buy_back_invoice_data'] = (isset($input['woocommerce_buy_back_invoice_data'])) ? $input['woocommerce_buy_back_invoice_data'] : '';
         return $input;
     }
 
@@ -159,7 +159,7 @@ class Woocommerce_Buy_Back_Admin
         $id = isset($args['id']) ? $args['id'] : '';
 
         $value = isset($options[$id]) ? $options[$id] : '';
-      
+
         wp_editor($value, "woocommerce_buy_back_options[woocommerce_buy_back_invoice_data]", [
             'media_buttons' => false, // hide insert/upload button(s)
             'textarea_name' => 'woocommerce_buy_back_options[woocommerce_buy_back_invoice_data]',
