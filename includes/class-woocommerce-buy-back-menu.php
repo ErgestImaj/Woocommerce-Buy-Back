@@ -69,11 +69,20 @@ class Woocommerce_Buy_Back_Menu
 
         add_settings_field(
             'woocommerce_buy_back_invoice_data',
-            __('Insert invoice data', WOOCOMMERCE_BUY_BACK),
+            __('Insert shipping data', WOOCOMMERCE_BUY_BACK),
             [$this, 'woocommerce_buy_back_invoice_data'],
             'woocommerce_buy_back_invoice_data',
             'woocommerce_buy_back_section',
             ['id' => 'woocommerce_buy_back_invoice_data']
+
+        );
+        add_settings_field(
+            'woocommerce_buy_back_button_name',
+            __('Button Name', WOOCOMMERCE_BUY_BACK),
+            [$this, 'woocommerce_buy_back_button_name'],
+            'woocommerce_buy_back_invoice_data',
+            'woocommerce_buy_back_section',
+            ['id' => 'woocommerce_buy_back_button_name']
 
         );
     }
@@ -108,6 +117,24 @@ class Woocommerce_Buy_Back_Menu
             'textarea_name' => 'woocommerce_buy_back_options[woocommerce_buy_back_invoice_data]',
             'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
         ]);
+
+    }
+    /**
+     * @param $args
+     * @since    1.0.0
+     */
+    public function woocommerce_buy_back_button_name($args) {
+
+        $options = get_option('woocommerce_buy_back_options');
+
+        $id = isset($args['id']) ? $args['id'] : '';
+
+        $value = isset($options[$id]) ? $options[$id] : '';
+
+        $content = "<input class='button-name' id='woocommerce_buy_back_options_{$id}' value='{$value}' name='woocommerce_buy_back_options[{$id}]'>";
+
+        echo $content;
+
 
     }
 
