@@ -12,10 +12,18 @@
 class Woocommerce_Buy_Back_Menu
 {
 
+    /**
+     * Woocommerce_Buy_Back_Menu constructor.
+     *  @since    1.0.0
+     */
     public function __construct() {
         add_action('admin_init', [$this, 'woocommerce_buy_back_register_settings']);
     }
 
+    /**
+     * Register submenu
+     *  @since    1.0.0
+     */
     public function register_submenu() {
         add_submenu_page(
             'woocommerce',
@@ -76,6 +84,7 @@ class Woocommerce_Buy_Back_Menu
     /**
      * @param $input
      * @return mixed
+     * @since    1.0.0
      */
     public function callback_validate_options($input) {
         $input['woocommerce_buy_back_invoice_data'] = (isset($input['woocommerce_buy_back_invoice_data'])) ? $input['woocommerce_buy_back_invoice_data'] : '';
@@ -84,6 +93,7 @@ class Woocommerce_Buy_Back_Menu
 
     /**
      * @param $args
+     * @since    1.0.0
      */
     public function woocommerce_buy_back_invoice_data($args) {
 

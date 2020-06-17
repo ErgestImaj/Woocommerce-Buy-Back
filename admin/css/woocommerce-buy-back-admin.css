@@ -1,4 +1,36 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.styled-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+}
+.styled-checkbox + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: #e6e1e1;
+    pointer-events: none;
+}
+
+.styled-checkbox:checked + label:before {
+    background:#5b841b;
+}
+.styled-checkbox:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

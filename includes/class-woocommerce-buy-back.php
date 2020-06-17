@@ -157,8 +157,14 @@ class Woocommerce_Buy_Back {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
 		$this->loader->add_action( 'admin_menu',new Woocommerce_Buy_Back_Menu(),'register_submenu' );
 
+		$this->loader->add_action( 'manage_shop_order_posts_custom_column',new Woocommerce_Buy_Back_New_Order_Admin_List_Column(),'add_new_order_admin_list_column_content' );
+		$this->loader->add_action( 'manage_edit-shop_order_columns',new Woocommerce_Buy_Back_New_Order_Admin_List_Column(),'add_new_order_admin_list_column' );
+
+		$this->loader->add_action( 'woocommerce_product_options_general_product_data',new Woocommerce_Buy_Back_Product_Trade_In(),'woocommerce_product_custom_fields' );
+		$this->loader->add_action( 'woocommerce_process_product_meta',new Woocommerce_Buy_Back_Product_Trade_In(),'woocommerce_product_custom_fields_save' );
 	}
 
 	/**
