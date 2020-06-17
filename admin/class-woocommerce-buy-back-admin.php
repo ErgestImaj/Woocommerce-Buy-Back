@@ -53,7 +53,7 @@ class Woocommerce_Buy_Back_Admin
 
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-        add_action('admin_init', [$this, 'woocommerce_buy_back_register_settings']);
+
     }
 
     /**
@@ -80,92 +80,5 @@ class Woocommerce_Buy_Back_Admin
 
     }
 
-    /**
-     * Register plugin submenu item in woocommerce
-     *
-     * @since    1.0.0
-     */
-
-    public function register_submenu()
-    {
-        add_submenu_page(
-            'woocommerce',
-            __('Buy Back', WOOCOMMERCE_BUY_BACK),
-            __('Buy Back', WOOCOMMERCE_BUY_BACK),
-            'manage_options',
-            'woocommerce-buy-back',
-            [$this, 'submenu_content']
-        );
-
-    }
-
-
-    /**
-     * Admin area view for the plugin
-     *
-     * @since    1.0.0
-     */
-    public function submenu_content()
-    {
-        require_once plugin_dir_path(__FILE__) . 'partials/woocommerce-buy-back-admin-display.php';
-
-    }
-
-    /**
-     * Register plugin options
-     *
-     * @since    1.0.0
-     */
-    public function woocommerce_buy_back_register_settings()
-    {
-
-        register_setting(
-            'woocommerce_buy_back_options',
-            'woocommerce_buy_back_options',
-            [$this, 'callback_validate_options']
-        );
-
-        add_settings_section(
-            'woocommerce_buy_back_section',
-            __('Buy Back Settings', WOOCOMMERCE_BUY_BACK),
-            [$this, 'callback_section'],
-            'woocommerce_buy_back_invoice_data'
-        );
-
-        add_settings_field(
-            'woocommerce_buy_back_invoice_data',
-            __('Insert invoice data', WOOCOMMERCE_BUY_BACK),
-            [$this, 'woocommerce_buy_back_invoice_data'],
-            'woocommerce_buy_back_invoice_data',
-            'woocommerce_buy_back_section',
-            ['id' => 'woocommerce_buy_back_invoice_data']
-
-        );
-    }
-
-    public function callback_section(){}
-
-    public function callback_validate_options($input)
-    {
-        $input['woocommerce_buy_back_invoice_data'] = (isset($input['woocommerce_buy_back_invoice_data'])) ? $input['woocommerce_buy_back_invoice_data'] : '';
-        return $input;
-    }
-
-    public function woocommerce_buy_back_invoice_data($args)
-    {
-
-        $options = get_option('woocommerce_buy_back_options');
-
-        $id = isset($args['id']) ? $args['id'] : '';
-
-        $value = isset($options[$id]) ? $options[$id] : '';
-
-        wp_editor($value, "woocommerce_buy_back_options[woocommerce_buy_back_invoice_data]", [
-            'media_buttons' => false, // hide insert/upload button(s)
-            'textarea_name' => 'woocommerce_buy_back_options[woocommerce_buy_back_invoice_data]',
-            'tinymce' => true, // load TinyMCE, can be used to pass settings directly to TinyMCE using an array()
-        ]);
-
-    }
 
 }
